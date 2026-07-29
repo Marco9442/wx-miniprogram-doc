@@ -1,0 +1,53 @@
+# [#](#CanvasContext-setLineWidth-number-lineWidth) CanvasContext.setLineWidth(number lineWidth)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [1.9.90](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [CanvasContext.lineWidth](CanvasContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+设置线条的宽度
+
+## [#](#参数) 参数
+
+### [#](#number-lineWidth) number lineWidth
+
+线条的宽度，单位px
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+ctx.beginPath()
+ctx.moveTo(10, 10)
+ctx.lineTo(150, 10)
+ctx.stroke()
+
+ctx.beginPath()
+ctx.setLineWidth(5)
+ctx.moveTo(10, 30)
+ctx.lineTo(150, 30)
+ctx.stroke()
+
+ctx.beginPath()
+ctx.setLineWidth(10)
+ctx.moveTo(10, 50)
+ctx.lineTo(150, 50)
+ctx.stroke()
+
+ctx.beginPath()
+ctx.setLineWidth(15)
+ctx.moveTo(10, 70)
+ctx.lineTo(150, 70)
+ctx.stroke()
+
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.

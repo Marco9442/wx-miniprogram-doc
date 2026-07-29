@@ -1,0 +1,47 @@
+# [#](#CanvasContext-fillText-string-text-number-x-number-y-number-maxWidth) CanvasContext.fillText(string text, number x, number y, number maxWidth)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+在画布上绘制被填充的文本
+
+## [#](#参数) 参数
+
+### [#](#string-text) string text
+
+在画布上输出的文本
+
+### [#](#number-x) number x
+
+绘制文本的左上角 x 坐标位置
+
+### [#](#number-y) number y
+
+绘制文本的左上角 y 坐标位置
+
+### [#](#number-maxWidth) number maxWidth
+
+需要绘制的最大宽度，可选
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+
+ctx.setFontSize(20)
+ctx.fillText('Hello', 20, 20)
+ctx.fillText('MINA', 100, 100)
+
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.

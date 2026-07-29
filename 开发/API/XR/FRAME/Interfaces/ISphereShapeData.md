@@ -1,0 +1,77 @@
+[xr-frame](./../) / [Exports](./../modules.html) / ISphereShapeData
+
+# [#](#Interface-ISphereShapeData) Interface: ISphereShapeData
+
+**`see`** {@link SphereShapes}
+
+## [#](#Hierarchy) Hierarchy
+
+- [`IShapeData`](./IShapeData.html)
+
+  ↳ **`ISphereShapeData`**
+
+## [#](#Table-of-contents) Table of contents
+
+### [#](#Properties) Properties
+
+- [autoFit](./ISphereShapeData.html#autoFit)
+- [center](./ISphereShapeData.html#center)
+- [disabled](./ISphereShapeData.html#disabled)
+- [radius](./ISphereShapeData.html#radius)
+
+## [#](#Properties-2) Properties
+
+### [#](#autoFit) autoFit
+
+• `Optional` **autoFit**: `boolean`
+
+轮廓是否自动贴合[Mesh组件](./../classes/Mesh.html)或[GLTF组件](./../classes/GLTF.html)的大小。
+如果当前元素下不存在Mesh组件和GLTF组件则不生效。
+
+> [MeshShape](./../classes/MeshShape.html)永远会开启这项。
+
+**`default`** false
+
+#### [#](#Inherited-from) Inherited from
+
+[IShapeData](./IShapeData.html).[autoFit](./IShapeData.html#autoFit)
+
+---
+
+### [#](#center) center
+
+• `Optional` **center**: [`number`, `number`, `number`]
+
+轮廓中心相对元素[Transform](./../classes/Transform.html)中心的偏移量。
+
+**`default`** [0, 0, 0]
+
+#### [#](#Inherited-from-2) Inherited from
+
+[IShapeData](./IShapeData.html).[center](./IShapeData.html#center)
+
+---
+
+### [#](#disabled) disabled
+
+• `Optional` **disabled**: `boolean`
+
+是否禁用shape。
+
+**`default`** false
+
+#### [#](#Inherited-from-3) Inherited from
+
+[IShapeData](./IShapeData.html).[disabled](./IShapeData.html#disabled)
+
+---
+
+### [#](#radius) radius
+
+• `Optional` **radius**: `number`
+
+球形轮廓的半径。
+
+**`default`** 1
+
+Incorrect translation.

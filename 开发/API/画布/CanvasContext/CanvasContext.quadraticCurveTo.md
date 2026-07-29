@@ -1,0 +1,83 @@
+# [#](#CanvasContext-quadraticCurveTo-number-cpx-number-cpy-number-x-number-y) CanvasContext.quadraticCurveTo(number cpx, number cpy, number x, number y)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+创建二次贝塞尔曲线路径。曲线的起始点为路径中前一个点。
+
+## [#](#参数) 参数
+
+### [#](#number-cpx) number cpx
+
+贝塞尔控制点的 x 坐标
+
+### [#](#number-cpy) number cpy
+
+贝塞尔控制点的 y 坐标
+
+### [#](#number-x) number x
+
+结束点的 x 坐标
+
+### [#](#number-y) number y
+
+结束点的 y 坐标
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+
+// Draw points
+ctx.beginPath()
+ctx.arc(20, 20, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('red')
+ctx.fill()
+
+ctx.beginPath()
+ctx.arc(200, 20, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('lightgreen')
+ctx.fill()
+
+ctx.beginPath()
+ctx.arc(20, 100, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('blue')
+ctx.fill()
+
+ctx.setFillStyle('black')
+ctx.setFontSize(12)
+
+// Draw guides
+ctx.beginPath()
+ctx.moveTo(20, 20)
+ctx.lineTo(20, 100)
+ctx.lineTo(200, 20)
+ctx.setStrokeStyle('#AAAAAA')
+ctx.stroke()
+
+// Draw quadratic curve
+ctx.beginPath()
+ctx.moveTo(20, 20)
+ctx.quadraticCurveTo(20, 100, 200, 20)
+ctx.setStrokeStyle('black')
+ctx.stroke()
+
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+针对 moveTo(20, 20) quadraticCurveTo(20, 100, 200, 20) 的三个关键坐标如下：
+
+- 红色：起始点(20, 20)
+- 蓝色：控制点(20, 100)
+- 绿色：终止点(200, 20)
+
+Incorrect translation.

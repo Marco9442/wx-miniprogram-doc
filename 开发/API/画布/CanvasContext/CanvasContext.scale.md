@@ -1,0 +1,41 @@
+# [#](#CanvasContext-scale-number-scaleWidth-number-scaleHeight) CanvasContext.scale(number scaleWidth, number scaleHeight)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+在调用后，之后创建的路径其横纵坐标会被缩放。多次调用倍数会相乘。
+
+## [#](#参数) 参数
+
+### [#](#number-scaleWidth) number scaleWidth
+
+横坐标缩放的倍数 (1 = 100%，0.5 = 50%，2 = 200%)
+
+### [#](#number-scaleHeight) number scaleHeight
+
+纵坐标轴缩放的倍数 (1 = 100%，0.5 = 50%，2 = 200%)
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+
+ctx.strokeRect(10, 10, 25, 15)
+ctx.scale(2, 2)
+ctx.strokeRect(10, 10, 25, 15)
+ctx.scale(2, 2)
+ctx.strokeRect(10, 10, 25, 15)
+
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.

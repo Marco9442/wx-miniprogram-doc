@@ -1,0 +1,102 @@
+# [#](#CanvasContext-arc-number-x-number-y-number-r-number-sAngle-number-eAngle-boolean-counterclockwise) CanvasContext.arc(number x, number y, number r, number sAngle, number eAngle, boolean counterclockwise)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+创建一条弧线。
+
+- 创建一个圆可以指定起始弧度为 0，终止弧度为 2 \* Math.PI。
+- 用 `stroke` 或者 `fill` 方法来在 `canvas` 中画弧线。
+
+## [#](#参数) 参数
+
+### [#](#number-x) number x
+
+圆心的 x 坐标
+
+### [#](#number-y) number y
+
+圆心的 y 坐标
+
+### [#](#number-r) number r
+
+圆的半径
+
+### [#](#number-sAngle) number sAngle
+
+起始弧度，单位弧度（在3点钟方向）
+
+### [#](#number-eAngle) number eAngle
+
+终止弧度
+
+### [#](#boolean-counterclockwise) boolean counterclockwise
+
+弧度的方向是否是逆时针
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+
+// Draw coordinates
+ctx.arc(100, 75, 50, 0, 2 * Math.PI)
+ctx.setFillStyle('#EEEEEE')
+ctx.fill()
+
+ctx.beginPath()
+ctx.moveTo(40, 75)
+ctx.lineTo(160, 75)
+ctx.moveTo(100, 15)
+ctx.lineTo(100, 135)
+ctx.setStrokeStyle('#AAAAAA')
+ctx.stroke()
+
+ctx.setFontSize(12)
+ctx.setFillStyle('black')
+ctx.fillText('0', 165, 78)
+ctx.fillText('0.5*PI', 83, 145)
+ctx.fillText('1*PI', 15, 78)
+ctx.fillText('1.5*PI', 83, 10)
+
+// Draw points
+ctx.beginPath()
+ctx.arc(100, 75, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('lightgreen')
+ctx.fill()
+
+ctx.beginPath()
+ctx.arc(100, 25, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('blue')
+ctx.fill()
+
+ctx.beginPath()
+ctx.arc(150, 75, 2, 0, 2 * Math.PI)
+ctx.setFillStyle('red')
+ctx.fill()
+
+// Draw arc
+ctx.beginPath()
+ctx.arc(100, 75, 50, 0, 1.5 * Math.PI)
+ctx.setStrokeStyle('#333333')
+ctx.stroke()
+
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+针对 arc(100, 75, 50, 0, 1.5 \* Math.PI)的三个关键坐标如下：
+
+- 绿色: 圆心 (100, 75)
+- 红色: 起始弧度 (0)
+- 蓝色: 终止弧度 (1.5 \* Math.PI)
+
+Incorrect translation.

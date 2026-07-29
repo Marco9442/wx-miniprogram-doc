@@ -1,0 +1,50 @@
+# [#](#ad-custom) ad-custom
+
+> 基础库 2.10.4 开始支持，低版本需做[兼容处理](../framework/compatibility.html)。
+
+> **微信 Windows 版**：支持
+>
+> **微信 Mac 版**：支持
+>
+> **微信 鸿蒙 OS 版**：支持
+
+渲染框架支持情况：Skyline （使用最新 [Nightly](/miniprogram/dev/devtools/nightly.html) 工具调试）、WebView
+
+## [#](#功能描述) 功能描述
+
+原生模板 广告。
+
+## [#](#属性说明) 属性说明
+
+| 属性 | 类型 | 默认值 | 必填 | 说明 | 最低版本 |
+| --- | --- | --- | --- | --- | --- |
+| unit-id | string |  | 是 | 广告单元id，可在[小程序管理后台](https://mp.weixin.qq.com)的流量主模块新建 | [2.10.4](../framework/compatibility.html) |
+| ad-intervals | number |  | 否 | 广告自动刷新的间隔时间，单位为秒，参数值必须大于等于30（该参数不传入时 模板 广告不会自动刷新） | [2.10.4](../framework/compatibility.html) |
+| bindload | eventhandle |  | 否 | 广告加载成功的回调 | [2.10.4](../framework/compatibility.html) |
+| binderror | eventhandle |  | 否 | 广告加载失败的回调，event.detail = {errCode: 1002} | [2.10.4](../framework/compatibility.html) |
+
+#### [#](#错误码信息与解决方案表) 错误码信息与解决方案表
+
+错误码是通过binderror回调获取到的错误信息。
+
+| 代码 | 异常情况 | 理由 | 解决方案 |
+| --- | --- | --- | --- |
+| 1000 | 后端错误调用失败 | 该项错误不是开发者的异常情况 | 一般情况下忽略一段时间即可恢复。 |
+| 1001 | 参数错误 | 使用方法错误 | 可以前往developers.weixin.qq.com确认具体教程（小程序和小游戏分别有各自的教程，可以在顶部选项中，“设计”一栏的右侧进行切换。 |
+| 1002 | 广告单元无效 | 可能是拼写错误、或者误用了其他APP的广告ID | 请重新前往mp.weixin.qq.com确认广告位ID。 |
+| 1003 | 内部错误 | 该项错误不是开发者的异常情况 | 一般情况下忽略一段时间即可恢复。 |
+| 1004 | 无适合的广告 | 广告不是每一次都会出现，这次没有出现可能是由于该用户不适合浏览广告 | 属于正常情况，且开发者需要针对这种情况做形态上的兼容。 |
+| 1005 | 广告组件审核中 | 你的广告正在被审核，无法展现广告 | 请前往mp.weixin.qq.com确认审核状态，且开发者需要针对这种情况做形态上的兼容。 |
+| 1006 | 广告组件被驳回 | 你的广告审核失败，无法展现广告 | 请前往mp.weixin.qq.com确认审核状态，且开发者需要针对这种情况做形态上的兼容。 |
+| 1007 | 广告组件被驳回 | 你的广告能力已经被封禁，封禁期间无法展现广告 | 请前往mp.weixin.qq.com确认小程序广告封禁状态。 |
+| 1008 | 广告单元已关闭 | 该广告位的广告能力已经被关闭 | 请前往mp.weixin.qq.com重新打开对应广告位的展现。 |
+
+## [#](#Bug-Tip) Bug & Tip
+
+1. `tip`：在无广告展示时，`ad-custom` 标签不会占用高度
+2. `tip`：`ad-custom` 组件不支持触发 `bindtap` 等触摸相关事件
+3. `tip`：目前可以给 `ad-custom` 标签设置 wxss 样式调整广告宽度，以使广告与页面更融洽，但请遵循[小程序流量主应用规范](https://wximg.qq.com/wxp/pdftool/get.html?id=rynYA8o3f&pa=10&name=miniprogramAds_supplier_guidance)
+4. `tip`：监听到error回调后，开发者可以针对性的处理，比如隐藏广告组件的父容器，以保证用户体验，但不要移除广告组件，否则将无法收到bindload的回调
+5. `tip`：不同模板涉及一些不同的使用场景，具体方式请参考模板编辑器
+
+Incorrect translation.

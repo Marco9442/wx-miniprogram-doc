@@ -1,0 +1,48 @@
+# [#](#CanvasGradient-addColorStop-number-stop-string-color) CanvasGradient.addColorStop(number stop, string color)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：不支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+添加颜色的渐变点。小于最小 stop 的部分会按最小 stop 的 color 来渲染，大于最大 stop 的部分会按最大 stop 的 color 来渲染
+
+## [#](#参数) 参数
+
+### [#](#number-stop) number stop
+
+表示渐变中开始与结束之间的位置，范围 0-1。
+
+### [#](#string-color) string color
+
+渐变点的颜色。
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+
+// Create circular gradient
+const grd = ctx.createLinearGradient(30, 10, 120, 10)
+grd.addColorStop(0, 'red')
+grd.addColorStop(0.16, 'orange')
+grd.addColorStop(0.33, 'yellow')
+grd.addColorStop(0.5, 'green')
+grd.addColorStop(0.66, 'cyan')
+grd.addColorStop(0.83, 'blue')
+grd.addColorStop(1, 'purple')
+
+// Fill with gradient
+ctx.setFillStyle(grd)
+ctx.fillRect(10, 10, 150, 80)
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.

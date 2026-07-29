@@ -1,0 +1,45 @@
+# [#](#CanvasContext-rect-number-x-number-y-number-width-number-height) CanvasContext.rect(number x, number y, number width, number height)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+创建一个矩形路径。需要用 [`fill`](CanvasContext.fill.html) 或者 [`stroke`](CanvasContext.stroke.html) 方法将矩形真正的画到 `canvas` 中
+
+## [#](#参数) 参数
+
+### [#](#number-x) number x
+
+矩形路径左上角的横坐标
+
+### [#](#number-y) number y
+
+矩形路径左上角的纵坐标
+
+### [#](#number-width) number width
+
+矩形路径的宽度
+
+### [#](#number-height) number height
+
+矩形路径的高度
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+ctx.rect(10, 10, 150, 75)
+ctx.setFillStyle('red')
+ctx.fill()
+ctx.draw()
+```
+
+![](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUYAAACtCAYAAADMI9YFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAflSURBVHhe7dlBjlVJDETRv/9N06pZwwBBh9WOSh+kGjozfePFVQGfH/4ggAACCPxE4IMHAggggMDPBIjRF4EAAgj8QoAYfRIIIIAAMfoGEEAAgd8T8BujLwQBBBDwG6NvAAEEEPAbo28AAQQQ+CsCf/RX6c/n88MPBr4B38B3+gb+yoT/5a/SXzD8QQABBL4LgdRZf2S89JLvAtM7EUDgDQKps4jxje/AFggg8C8CxOhzQAABBH79N8Lwn//8xuiTQgCB5wj4jfG5SC2EAAIpAWJMCZpHAIHnCBDjc5FaCAEEUgLEmBI0jwACzxEgxucitRACCKQE+sT49d/kfjCY/gbSppg/RYAYpwvovE6pn6q1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBIhxuoDO6xTtqVpbNiVAjETWKbLpXNKmmD9FgBinC+i8TtGeqrVlUwLESGSdIpvOJW2K+VMEiHG6gM7rFO2pWls2JUCMRNYpsulc0qaYP0WAGKcL6LxO0Z6qtWVTAsRIZJ0im84lbYr5UwSIcbqAzusU7alaWzYlQIxE1imy6VzSppg/RYAYpwvovE7Rnqq1ZVMCxEhknSKbziVtivlTBPrEeAq/ZRFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJEAMTam4k0IILBKgBhX8bscAQQaCRBjYyrehAACqwSIcRW/yxFAoJHA/ybGr4v8YOAb8A18l28gEfYnGTaLAAIIvEiAGF9M1U4IIBARIMYIn2EEEHiRADG+mKqdEEAgIkCMET7DCCDwIgFifDFVOyGAQESAGCN8hhFA4EUCxPhiqnZCAIGIADFG+AwjgMCLBIjxxVTthAACEQFijPAZRgCBFwkQ44up2gkBBCICxBjhM4wAAi8S+AcYEdrqfcIqWgAAAABJRU5ErkJggg==)
+
+Incorrect translation.

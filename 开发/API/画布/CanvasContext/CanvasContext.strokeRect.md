@@ -1,0 +1,44 @@
+# [#](#CanvasContext-strokeRect-number-x-number-y-number-width-number-height) CanvasContext.strokeRect(number x, number y, number width, number height)
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+画一个矩形(非填充)。 用 [`setStrokeStyle`](CanvasContext.setStrokeStyle.html) 设置矩形线条的颜色，如果没设置默认是黑色。
+
+## [#](#参数) 参数
+
+### [#](#number-x) number x
+
+矩形路径左上角的横坐标
+
+### [#](#number-y) number y
+
+矩形路径左上角的纵坐标
+
+### [#](#number-width) number width
+
+矩形路径的宽度
+
+### [#](#number-height) number height
+
+矩形路径的高度
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+ctx.setStrokeStyle('red')
+ctx.strokeRect(10, 10, 150, 75)
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.

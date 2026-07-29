@@ -35,3 +35,6 @@ ENV/
 *.log
 tmp/
 scratch/
+_scrape_report.json
+_state.json
+

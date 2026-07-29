@@ -1,0 +1,45 @@
+# [#](#CanvasContext-beginPath) CanvasContext.beginPath()
+
+CanvasContext 是旧版的接口，新版 [Canvas 2D](../../component/canvas.html) 接口与 Web 一致
+
+从基础库 [2.9.0](../../framework/compatibility.html) 开始，本接口停止维护，请使用 [RenderingContext](RenderingContext.html) 代替
+
+> **小程序插件**：支持
+
+> 相关文档: [旧版画布迁移指南](../../framework/ability/canvas-legacy-migration.html)、[canvas 组件介绍](../../component/canvas.html)
+
+## [#](#功能描述) 功能描述
+
+开始创建一个路径。需要调用 `fill` 或者 `stroke` 才会使用路径进行填充或描边
+
+- 在最开始的时候相当于调用了一次 `beginPath`。
+- 同一个路径内的多次 `setFillStyle`、`setStrokeStyle`、`setLineWidth`等设置，以最后一次设置为准。
+
+## [#](#示例代码) 示例代码
+
+```
+const ctx = wx.createCanvasContext('myCanvas')
+// begin path
+ctx.rect(10, 10, 100, 30)
+ctx.setFillStyle('yellow')
+ctx.fill()
+
+// begin another path
+ctx.beginPath()
+ctx.rect(10, 40, 100, 30)
+
+// only fill this rect, not in current path
+ctx.setFillStyle('blue')
+ctx.fillRect(10, 70, 100, 30)
+
+ctx.rect(10, 100, 100, 30)
+
+// it will fill current path
+ctx.setFillStyle('red')
+ctx.fill()
+ctx.draw()
+```
+
+![](data:image/png;base64,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)
+
+Incorrect translation.
