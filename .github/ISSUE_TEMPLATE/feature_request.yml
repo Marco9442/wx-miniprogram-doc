@@ -1,0 +1,19 @@
+name: 功能 / Agent 索引建议 (Feature Request)
+description: 针对仓库配置、Agent 检索优化或文档索引提出改进建议
+title: "[Feature]: "
+labels: ["enhancement", "agent-optimization"]
+body:
+  - type: textarea
+    id: feature_description
+    attributes:
+      label: 改进建议 (Feature Description)
+      description: 请详细描述希望新增的索引功能或 Agent 配置优化项。
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: 解决的痛点 (Rationale)
+      description: 为什么这项改动能提升 Agent 或开发者的使用体验？
+    validations:
+      required: false

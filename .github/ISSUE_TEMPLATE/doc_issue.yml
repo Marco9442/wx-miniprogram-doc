@@ -1,0 +1,31 @@
+name: 文档错误 / 内容更新反馈 (Doc Issue)
+description: 反馈微信小程序文档中存在的错别字、陈旧 API 或描述错误
+title: "[Doc Issue]: "
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈微信小程序文档问题！请尽可能提供有问题的具体文件路径和修改建议。
+  - type: input
+    id: doc_path
+    attributes:
+      label: 文档相对路径 (Document Path)
+      description: 例如 `开发/API/网络/发起请求.md`
+      placeholder: 开发/API/...
+    validations:
+      required: true
+  - type: textarea
+    id: issue_description
+    attributes:
+      label: 问题详细描述 (Description)
+      description: 描述文档中的错误内容或需要更正之处。
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_fix
+    attributes:
+      label: 建议修复内容 (Suggested Fix)
+      description: 如果您有更正方案，请写在这里。
+    validations:
+      required: false

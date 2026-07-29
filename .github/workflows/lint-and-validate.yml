@@ -1,0 +1,37 @@
+name: CI - Doc Index & Syntax Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: Validate JSON Index & Core Markdown Files
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate doc-index.json Format
+        run: |
+          python -c "
+          import json
+          with open('doc-index.json', 'r', encoding='utf-8') as f:
+              data = json.load(f)
+          print(f'Successfully validated doc-index.json with {len(data)} document entries.')
+          "
+
+      - name: Check Core Agent Files Existence
+        run: |
+          test -f AGENTS.md && echo "AGENTS.md present"
+          test -f llms.txt && echo "llms.txt present"
+          test -f llms-full.txt && echo "llms-full.txt present"
+          test -f INDEX.md && echo "INDEX.md present"
