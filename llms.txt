@@ -1,12 +1,12 @@
 # 微信小程序全量官方文档 (AI Agent & LLM 检索索引)
 
-> 本仓库收录微信小程序官方完整文档（包含 4400+ 篇 Markdown 指向文件），为 AI Agent、RAG 向量检索系统、Cursor / Claude / Copilot 提供结构化文档索引与智能导航。
+> 本仓库收录微信小程序官方完整文档（包含 3,852 篇完整 Markdown 页面），为 AI Agent、RAG 向量检索系统、Cursor / Claude / Copilot 提供结构化文档索引与智能导航。
 
 ## 核心 Agent 文件 (Core Agent Index Files)
 - [AGENTS.md](AGENTS.md): 面向 AI Agent 的系统级阅读指南、分类路由与术语索引
 - [INDEX.md](INDEX.md): 人机双宜的全量分类路由矩阵
-- [doc-index.json](doc-index.json): 机器可读的结构化 JSON 元数据矩阵（4400+ 文档条目）
-- [llms-full.txt](llms-full.txt): 全量 4400+ Markdown 文档相对路径与摘要映射
+- [doc-index.json](doc-index.json): 机器可读的结构化 JSON 元数据矩阵（3,852 篇完整页面 Markdown）
+- [llms-full.txt](llms-full.txt): 全量 3,852 篇 Markdown 文档相对路径与摘要映射
 
 ## 六大核心域 (Core Categories)
 
