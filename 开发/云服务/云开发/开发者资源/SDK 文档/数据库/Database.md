@@ -1,38 +1,24 @@
-# [#](#Database) Database
+<!-- 本章节内容提取自主文档 -->
+<!-- See: 开发/云服务/云开发/开发者资源/SDK 文档/数据库.md -->
 
-云开发 SDK 数据库实例
+# [#](#Cloud-database-options-Object-Database) <Cloud>.database(options: Object): [Database](database/Database)
 
-## [#](#属性) 属性
+> 支持端：[小程序](https://developers.weixin.qq.com/miniprogram/dev/framework/client-lib/version) , [云函数](../reference/changelog-server-sdk) , [Web](../reference/changelog-web-sdk)
 
-### [#](#Command-command) <Command> command
+获取数据库实例
 
-数据库操作符
+## [#](#参数) 参数
 
-### [#](#Geo-Geo) <Geo> Geo
+### [#](#options-Object) options: Object
 
-数据库地理位置结构
+| 属性 | 类型 | 默认值 | 必填 | 说明 |
+| --- | --- | --- | --- | --- |
+| env | string |  | 否 | 环境 ID，若不填则采用 init 中的值 |
+| throwOnNotFound | boolean |  | 否 | 在调用获取记录（doc.get）时，如果获取不到，是否抛出异常，如果不抛出异常，doc.get 返回空。默认 true。云函数 wx-server-sdk 1.7.0 开始支持。 |
 
-## [#](#方法) 方法
+## [#](#返回值) 返回值
 
-### [#](#Database-collection-name-string-Collection) <Database.collection>(name: string): <Collection>
-
-获取集合的引用。方法接受一个 name 参数，指定需引用的集合名称。
-
-### [#](#Database-createCollection-collectionName-string-Promise-Object) <Database.createCollection>(collectionName: string): Promise<Object>
-
-创建集合，如果集合已经存在会创建失败
-
-### [#](#Database-serverDate-options-Object-ServerDate) <Database.serverDate>(options: Object): [ServerDate](serverDate/ServerDate)
-
-构造一个服务端时间的引用。可用于查询条件、更新字段值或新增记录时的字段值。
-
-### [#](#Database-runTransaction-callback-function-times-number-Promise-any) <Database.runTransaction>(callback: function, times: number): Promise<any>
-
-发起事务。仅可在云函数中使用。
-
-### [#](#Database-startTransaction-Promise-Transaction) <Database.startTransaction>(): Promise<[Transaction](transaction/Transaction)>
-
-开始事务，另一个同样可以使用的发起事务的 API 是 [runTransaction](Database.runTransaction)。仅可在云函数中使用。
+### [#](#Database) [Database](database/Database)
 
 ## [#](#小程序端示例) 小程序端示例
 
@@ -51,6 +37,8 @@ const testDB = wx.cloud.database({
 ```
 
 ## [#](#云函数端示例) 云函数端示例
+
+**env 设置示例**
 
 以下调用获取和云函数当前所在环境相同的数据库的引用：
 
@@ -84,4 +72,20 @@ cloud.init({
 const testDB = cloud.database()
 ```
 
+**throwOnNotFound 设置示例**
+
+以下设置将 `doc.get` 的行为改为：如果获取不到记录，不抛出异常，而是返回空。
+
+```
+const cloud = require('wx-server-sdk')
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV,
+  throwOnNotFound: false
+})
+const testDB = cloud.database()
+```
+
 Incorrect translation.
+
+---
+> *完整文档请参阅主页面：[开发-云服务-云开发-开发者资源-SDK 文档-数据库](../数据库.md)*
