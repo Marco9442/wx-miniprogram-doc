@@ -28,15 +28,22 @@ jobs:
           with open('doc-index.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
           files = data['files']
-          assert data['total_pages'] == len(files), 'Index page count does not match file list'
+          count = len(files)
+          assert data['total_pages'] == count, 'Index page count does not match file list'
           missing = [path for path in files if not Path(path).is_file()]
           assert not missing, f'Indexed document files are missing: {missing[:10]}'
-          print(f'Successfully validated doc-index.json with {len(files)} document entries.')
+          print(f'Successfully validated doc-index.json with {count} document entries.')
           "
 
-      - name: Check Documentation Entry Files
+      - name: Check Core Agent Files Existence
         run: |
-          test -s README.md && echo "README.md present"
-          test -s llms.txt && echo "llms.txt present"
-          test -s llms-full.txt && echo "llms-full.txt present"
-          test -s doc-index.json && echo "doc-index.json present"
+          missing=0
+          for file in AGENTS.md INDEX.md llms.txt llms-full.txt README.md doc-index.json; do
+            if test -s "$file"; then
+              echo "$file present"
+            else
+              echo "::error file=$file::Required core file is missing: $file"
+              missing=1
+            fi
+          done
+          exit "$missing"
