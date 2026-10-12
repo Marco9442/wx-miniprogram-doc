@@ -26,12 +26,19 @@ jobs:
           import json
           with open('doc-index.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
-          print(f'Successfully validated doc-index.json with {len(data)} document entries.')
+          count = len(data['files'])
+          print(f'Successfully validated doc-index.json with {count} document entries.')
           "
 
       - name: Check Core Agent Files Existence
         run: |
-          test -f AGENTS.md && echo "AGENTS.md present"
-          test -f llms.txt && echo "llms.txt present"
-          test -f llms-full.txt && echo "llms-full.txt present"
-          test -f INDEX.md && echo "INDEX.md present"
+          missing=0
+          for file in AGENTS.md llms.txt llms-full.txt INDEX.md; do
+            if test -f "$file"; then
+              echo "$file present"
+            else
+              echo "::error file=$file::Required core file is missing: $file"
+              missing=1
+            fi
+          done
+          exit "$missing"
