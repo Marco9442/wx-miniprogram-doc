@@ -24,14 +24,19 @@ jobs:
         run: |
           python -c "
           import json
+          from pathlib import Path
           with open('doc-index.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
-          print(f'Successfully validated doc-index.json with {len(data)} document entries.')
+          files = data['files']
+          assert data['total_pages'] == len(files), 'Index page count does not match file list'
+          missing = [path for path in files if not Path(path).is_file()]
+          assert not missing, f'Indexed document files are missing: {missing[:10]}'
+          print(f'Successfully validated doc-index.json with {len(files)} document entries.')
           "
 
-      - name: Check Core Agent Files Existence
+      - name: Check Documentation Entry Files
         run: |
-          test -f AGENTS.md && echo "AGENTS.md present"
-          test -f llms.txt && echo "llms.txt present"
-          test -f llms-full.txt && echo "llms-full.txt present"
-          test -f INDEX.md && echo "INDEX.md present"
+          test -s README.md && echo "README.md present"
+          test -s llms.txt && echo "llms.txt present"
+          test -s llms-full.txt && echo "llms-full.txt present"
+          test -s doc-index.json && echo "doc-index.json present"
