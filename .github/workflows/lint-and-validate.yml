@@ -9,14 +9,14 @@ on:
 jobs:
   validate:
     name: Validate JSON Index & Core Markdown Files
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.11'
 
@@ -24,17 +24,22 @@ jobs:
         run: |
           python -c "
           import json
+          from pathlib import Path
           with open('doc-index.json', 'r', encoding='utf-8') as f:
               data = json.load(f)
-          count = len(data['files'])
+          files = data['files']
+          count = len(files)
+          assert data['total_pages'] == count, 'Index page count does not match file list'
+          missing = [path for path in files if not Path(path).is_file()]
+          assert not missing, f'Indexed document files are missing: {missing[:10]}'
           print(f'Successfully validated doc-index.json with {count} document entries.')
           "
 
       - name: Check Core Agent Files Existence
         run: |
           missing=0
-          for file in AGENTS.md llms.txt llms-full.txt INDEX.md; do
-            if test -f "$file"; then
+          for file in AGENTS.md INDEX.md llms.txt llms-full.txt README.md doc-index.json; do
+            if test -s "$file"; then
               echo "$file present"
             else
               echo "::error file=$file::Required core file is missing: $file"
